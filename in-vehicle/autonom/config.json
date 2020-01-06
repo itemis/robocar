@@ -1,0 +1,205 @@
+{
+	"camera-m" : "/cameras/camera-gstreamer",
+	"homography" : "/homography-direct",
+	"geolocation" : "/geo-csv",
+	"perspective-mapping" : "/perspective-mapper",
+	"cameras-auto-detect" : {
+		"vi-output, imx219 6-0010" : "/cameras/nano-rpi",
+		"USB 2.0 Camera": "/cameras/camera-usb"
+	},
+	"cameras" : {
+		"camera-video" : {
+		   "type" : "video",
+		   "file" : "Driving_at_Sunset.mp4"
+		},
+		"camera-directory" : {
+		    "type" : "directory",
+			"path" : "tests/images"
+		},
+		"nano-rpi" : {
+		    "type" : "gstreamer",
+			"config" : "tests/images",
+			"undistort" : {
+				"CameraMatrix":[6.1042868202109855e+02, 0.0, 6.5214392342611825e+02, 0.0, 4.0400171141068842e+02 ,3.1415789291312791e+02, 0.0, 0.0, 1.0],
+				"distortionCoeffs":[-1.8738949642767188e-02, 3.0868180169294455e-02, -2.5805891763426526e-03, 0.0]
+			}
+		},
+		"camera-usb" : {
+			"type":  "default",
+			"resolution":[640,480],
+			"undistort" : {
+					"CameraMatrix" : [2.6842431278517489e+02, 0.0, 3.2081509383616367e+02, 0.0, 2.6788435117017508e+02, 2.24986107781559449e+02, 0.0, 0.0, 1.0],
+					"distortionCoeffs":[-1.2275403761590011e-02, -4.4620773467789344e-02, 3.0748522855232514e-02, 0.0]
+			}
+	
+		}
+
+	},
+	"imagesaver-raw" : {
+		"path" : "raw_images",
+		"file" : "Img_{2}_{0:06}_{1}.jpeg"
+	},
+	
+	"imagesaver-undistorted" : {
+		"path" : "Undistorted_images",
+		"file" : "Img_{0:06}.jpeg"
+	},
+	
+	"imagesaver-equalized" : {
+		"path" : "Undistorted_images",
+		"file" : "Img_{0:06}_equalized.jpeg"
+	},
+	
+	"imagesaver-warped" : {
+		"path" : "Undistorted_images",
+		"file" : "Img_{0:06}_warped.jpeg"
+	},
+	
+	"imagesaver-roi" : {
+		"path" : "Undistorted_images",
+		"file" : "Img_{0:06}_roi.jpeg"
+	},
+	"imagesaver-trajectory" : {
+		"path" : "Undistorted_images",
+		"file" : "Img_{0:06}_{1}_trajectory.png"
+	},
+	
+	"homography-alt" : {
+		"src" : [[100,0],[219,0],[319,159],[0,159]],
+		"dst" :  [[0,0],[319,0],[319,399],[0,399]],
+		"size": [320,400]
+	},
+	
+	"homography-d" : {
+		"src" : [[130,90],[190,90],[80,239],[240,239]],
+		"dst" :  [[25,100],[75,100],[25,199],[75,199]],
+		"size": [100,200]
+	},
+	
+	"homography-direct640" : {
+		"direct" :  [-0.3718706820054438, -1.465490810786013, 434.2900044981993,
+ -0.0184181895408781, -2.560668362191743, 645.1500330268468,
+ -3.563319950919492e-05, -0.004635589897772857, 1],
+		
+		"size" : [640,480]
+	},
+	
+		"homography-direct": {
+		"direct" :  [-0.3385988650652474, -1.355328613845016, 211.1975238419909,
+ 0.01862397191433381, -2.398266420985081, 315.4791657999676,
+ 2.618576927171629e-05, -0.008774107819206874, 1],
+		
+		"size" : [320,240],
+		"pixsize-mm": 6.2
+	},
+	
+	"homography-x" : {
+		"src" : [[80,239],[240,239],[105,182],[215,182],[120,150],[200,150]],
+		"dst" : [[25,199],[75,199], [25,159],[75,159],[25,139],[75,139]],
+		"size": [100,200]
+	},
+	
+	"cv-pipe" : {
+		"undistort" : {
+			"CameraMatrix" : [2.6842431278517489e+02, 0.0, 3.2081509383616367e+02, 0.0, 2.6788435117017508e+02, 2.24986107781559449e+02, 0.0, 0.0, 1.0],
+			"bla1":[6.5746697810243404e+002, 0.0, 3.1950000000000000e+002, 0.0,6.5746697810243404e+002, 2.3950000000000000e+002, 0.0, 0.0, 1.0],
+			"distortionCoeffs":[-1.2275403761590011e-02, -4.4620773467789344e-02, 3.0748522855232514e-02, 0.0],
+			"bla2":[-4.1802327018241026e-001, 5.0715243805833121e-001, 0.0, 0.0, -5.7843596847939704e-001],
+			"nano-cm":[6.1042868202109855e+02, 0.0, 6.5214392342611825e+02, 0.0, 4.0400171141068842e+02 ,3.1415789291312791e+02, 0.0, 0.0, 1.0],
+			"nano-dc":[-1.8738949642767188e-02, 3.0868180169294455e-02, -2.5805891763426526e-03, 0.0]
+		},
+		
+		"resolutions" : {
+			"camera" : [640,480],
+			"processing" : [320,240],
+			"processing-x" : [640,480]
+		},
+		"virtual-track" : true
+	},
+	"display" : {
+		"type": "pipe",
+		"config" : "distort"
+	},
+	
+	"car-geometry" : {
+		"wheelbase" : 0.325,
+		"width": 0.2,
+		"bounding-box": [0.65,0.3,0.45]
+	},
+	"camera-sainsmart" : {
+		"resolution" : [640,480],
+		"focal-length" : 23.4,
+		"dist-wheel-image":0.25
+	},
+	"ml-e2e" : {
+		"model-h5" : "ml-model/model.lite"
+	},
+	"joystick" : {
+		"deadspace" : 10
+	}, 
+	"pca-steer" : {
+		"pca-min": 470,
+		"pca-max": 820,
+		"domain-min": -30,
+		"domain-max": 30,
+		"address" : 65,
+		"frequency"  : 100,
+		"channel": 0
+	},
+	"pca-drive" : {
+		"pca-min": 618,
+		"pca-max": 661,
+		"domain-min": -1,
+		"domain-max": 1,
+		"address" : 64,
+		"frequency"  : 100,
+		"channel": 4
+	},
+	"virtual-track" : "/virtual-track-grid",
+	"virtual-track-normal" : {
+		"texture" : "xil-data/Part Studio 1.png",
+		"fov" : 200,
+		"cm-per-pix": 1,
+		"width-in-cm": 2100,
+		"max-opaque": 128,
+		"virtual-north": 135.0,
+		 "center-offset" : [300,800]
+		 
+	},
+	
+	"virtual-track-grid" : {
+		"texture" : "xil-data/Part Studio 1-1pxcm-grid.png",
+		"fov" : 200,
+		"cm-per-pix": 1,
+		"width-in-cm": 2190,
+		"max-opaque": 128,
+		"virtual-north": 0.0,
+		 "center-offset" : [160,80],
+		 "visualize": false
+		 
+	},
+	
+	"marvelmind" : {
+		"type" : "marvelmind",
+		"calibration" : [43, -414],
+		"scale" : 1.626,
+		"auto-calibrate" : true
+
+	}, 
+	"geo-csv" : {
+		"type" : "csv",
+		"file" : "geo.csv"
+
+	},
+	"perspective-mapper" : {
+		"chessboard" : {
+			"size" : [6,8],
+			"mm" : 55
+		},
+		"target-resolution" : [320,240]
+	},
+	"gstream-serv-string-a" : "appsrc ! x264enc ! mpegtsmux ! rtpmp2tpay ! udpsink host=192.168.0.150 port=15001",
+	"gstream-serv-string-y" :  "appsrc ! videoconvert ! x264enc speed-preset=ultrafast tune=zerolatency  ! flvmux ! rtmpsink location=rtmp://192.168.0.150/mylive/test",
+	"gstream-serv-string" :"appsrc ! videoconvert ! video/x-raw, format=I420, width=640, height=480, framerate=30/1 ! rtpvrawpay ! udpsink host=192.168.0.150 port=15001",
+	"gstream-serv-string-web": "gst-launch-1.0         v4l2src device=/dev/video0         ! videoconvert ! videoscale ! video/x-raw,width=320,height=240         ! clockoverlay shaded-background=true font-desc='Sans 38'         ! theoraenc ! oggmux ! tcperversink host=127.0.0.1 port=8080"
+}

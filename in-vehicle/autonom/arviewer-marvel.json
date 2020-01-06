@@ -1,0 +1,9 @@
+{
+	"geolocation" : "/marvelmind",
+	"ar-viewer" : {
+		"birds-view" : true
+	},
+	"virtual-track" : {
+		"center-offset" : [300,800]
+	}
+}

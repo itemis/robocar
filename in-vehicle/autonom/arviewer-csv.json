@@ -1,0 +1,9 @@
+{
+	"cv-pipe" : {
+		"virtual-track" : true
+	},
+	"ar-viewer" : {
+		"birds-view" : true
+	}
+	
+}

@@ -1,0 +1,12 @@
+{
+	"camera": "/cameras/camera-image",
+	"cameras": {
+		"camera-image": {
+			"type": "file",
+			"path": "tests/images/UndistortedImg26_Angle30.png"
+		}
+	},
+	"ar-viewer" : {
+		"birds-view" : true
+	}
+}
